@@ -97,6 +97,9 @@ class Node:
 
 
 class LinkedList:
+    """
+    linkedList
+    """
     def __init__(self):
         # You are also welcome to use a sentinel/dummy node!
         # It is definitely recommended, which will we learn more
@@ -112,6 +115,9 @@ class LinkedList:
     # If a term with that exponent already exists, add the coefficients together.
     # You must keep the terms in descending order by exponent.
     def insert_term(self, coeff, exp):
+        """
+        insert term
+        """
         if coeff == 0:
             return
         node = Node(coeff, exp)
@@ -121,7 +127,6 @@ class LinkedList:
             node.next = current
             self.head = node
             return
-        
         if current.exp == exp:
             current.coeff += coeff
             if current.coeff == 0:
@@ -137,20 +142,18 @@ class LinkedList:
             return
         node.next= current.next
         current.next = node
-     
-    
-        
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p):
+        """
+        add
+        """
         current = p.head
         poly = self
         while current is not None:
             poly.insert_term(current.coeff, current.exp)
             current = current.next
-        return poly 
-
-    # Multiply a polynomial p with the polynomial and return the product as a new linked list.
+        return poly
     def mult(self, p):
         current = p.head
         poly = LinkedList()
@@ -163,11 +166,6 @@ class LinkedList:
                 poly_current = poly_current.next
             current = current.next
         return poly
-
-
-            
-
-
     # Return a string representation of the polynomial.
     def __str__(self):
         current = self.head
@@ -184,8 +182,6 @@ class LinkedList:
             if i!=(len(lst)-1):
                 string+=" + "
         return string
-
-
 def main():
     # read data from stdin (terminal/file) using input() and create polynomial p
     p_n = int(input())
@@ -195,7 +191,6 @@ def main():
         p_coeff = int(nums[0])
         p_exp = int(nums[1])
         p.insert_term(p_coeff,p_exp)
-    
     input()
 
     # read data from stdin (terminal/file) using input() and create polynomial q
@@ -206,14 +201,13 @@ def main():
         q_coeff = int(nums[0])
         q_exp = int(nums[1])
         q.insert_term(q_coeff,q_exp)
-    
 
     # get sum of p and q as a new linked list and print sum
     sum_pq = p.add(q)
     print(sum_pq)
 
     # get product of p and q as a new linked list and print product
-    prod_pq = p.add(q)
+    prod_pq = p.mult(q)
     print(prod_pq)
 
 
