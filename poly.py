@@ -148,23 +148,30 @@ class LinkedList:
         """
         add
         """
-        current = p.head
-        poly = self
-        while current is not None:
-            poly.insert_term(current.coeff, current.exp)
-            current = current.next
+        poly = LinkedList()
+        self_current = self.head
+        p_current = p.head
+        while self_current is not None:
+            poly.insert_term(self_current.coeff, self_current.exp)
+            self_current = self_current.next
+        while p_current is not None:
+            poly.insert_term(p_current.coeff, p_current.exp)
+            p_current = p_current.next
         return poly
     def mult(self, p):
-        current = p.head
+        """
+        mult
+        """
         poly = LinkedList()
-        while current is not None:
-            poly_current = self.head
+        self_current = self.head
+        while self_current is not None:
+            poly_current = p.head
             while poly_current is not None:
-                coeff = current.coeff * poly_current.coeff
-                exp = current.exp + poly_current.exp
+                coeff = self_current.coeff * poly_current.coeff
+                exp = self_current.exp + poly_current.exp
                 poly.insert_term(coeff,exp)
                 poly_current = poly_current.next
-            current = current.next
+            self_current = self_current.next
         return poly
     # Return a string representation of the polynomial.
     def __str__(self):
@@ -183,6 +190,9 @@ class LinkedList:
                 string+=" + "
         return string
 def main():
+    """
+    main
+    """
     # read data from stdin (terminal/file) using input() and create polynomial p
     p_n = int(input())
     p = LinkedList()
