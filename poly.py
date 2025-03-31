@@ -196,7 +196,7 @@ def main():
         p_exp = int(nums[1])
         p.insert_term(p_coeff,p_exp)
     
-
+    input()
 
     # read data from stdin (terminal/file) using input() and create polynomial q
     q_n = int(input())
